@@ -5,6 +5,9 @@
 
 FROM fedora:22
 
+RUN dnf -y install 'dnf-command(copr)' && \
+    dnf -y copr enable jasonish/suricata-beta-2.1
+
 RUN dnf -y install \
     cronie \
     findutils \
