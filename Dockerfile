@@ -34,4 +34,6 @@ RUN chmod 755 /var/log/suricata
 COPY /etc /etc
 COPY /docker-entrypoint.sh /
 
+VOLUME /var/log/suricata
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
