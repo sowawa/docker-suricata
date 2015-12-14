@@ -21,8 +21,9 @@ RUN dnf -y install \
 
 # Install my own rule download tool, rulecat and seed the image with
 # some rules.
+COPY /etc/suricata/disable.conf /etc/suricata/disable.conf
 RUN pip install https://github.com/jasonish/py-idstools/archive/master.zip && \
-    idstools-rulecat --rules-dir /etc/suricata/rules
+    idstools-rulecat --rules-dir /etc/suricata/rules --disable=/etc/suricata/disable.conf
 
 # Cleanup - should probably be merged with above to reduce layer size.
 RUN dnf -y clean all && \
